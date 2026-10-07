@@ -1,0 +1,44 @@
+[project]
+name = "typevent"
+version = "0.1.0"
+description = "A minimal, typed event primitive."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "enterdot", email = "enterdot.sk3xz@slmail.me" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/enterdot/typevent"
+Repository = "https://github.com/enterdot/typevent"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.0",
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+mypy_path = "src"
+
+[tool.ruff]
+include = ["pyproject.toml", "src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["ALL"]
+ignore = ["COM812", "D203", "D213", "CPY", "N818"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ARG001", "EM101", "PLR2004", "S101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
